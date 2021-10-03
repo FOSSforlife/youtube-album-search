@@ -1,5 +1,7 @@
 import { youtube_v3 } from 'googleapis';
 import { compareTwoStrings } from 'string-similarity';
+import { youtube as youtubeFilter } from 'metadata-filter';
+import { decode as htmlDecode } from 'html-entities';
 
 type Reason = 'albumInTitle' | 'tracklistInDescription' | 'videoLength';
 
@@ -8,6 +10,8 @@ interface Match {
 	reason: Reason;
 	stringSimilarity?: number;
 	title: string;
+	filteredTitle: string;
+	index: number;
 }
 
 interface AlbumSearchOptions {
@@ -43,11 +47,14 @@ export async function albumSearch(
 
 	const matches: Array<Match> = [];
 
-	for (const item of results.data.items) {
-		const title = item
-			.snippet!.title!.normalize()
-			.replace(/[\u0300-\u036f]/g, '') // normalizes 𝓌𝑒𝒾𝓇𝒹 𝒸𝒽𝒶𝓇𝒶𝒸𝓉𝑒𝓇𝓈 https://stackoverflow.com/a/37511463
-			.toLowerCase();
+	for (let [itemIndex, item] of Object.entries(results.data.items) as Array<[string, youtube_v3.Schema$SearchResult]>) {
+		const title = htmlDecode(
+			item
+				.snippet!.title!.normalize()
+				.replace(/[\u0300-\u036f]/g, '') // normalizes 𝓌𝑒𝒾𝓇𝒹 𝒸𝒽𝒶𝓇𝒶𝒸𝓉𝑒𝓇𝓈 https://stackoverflow.com/a/37511463
+				.toLowerCase()
+		);
+		const filteredTitle = youtubeFilter(title);
 
 		let reason: Reason;
 		if (albumInTitle(item)) {
@@ -58,9 +65,11 @@ export async function albumSearch(
 			continue;
 		}
 
-		const stringSimilarity = options.sortByStringSimilarity ? compareTwoStrings(query, title) : undefined;
+		const stringSimilarity = options.sortByStringSimilarity
+			? compareTwoStrings(query, filteredTitle.replace(' - ', ''))
+			: undefined;
 
-		matches.push({ item, reason, stringSimilarity, title });
+		matches.push({ item, index: Number(itemIndex), reason, stringSimilarity, title, filteredTitle });
 	}
 
 	matches.sort((a, b) => b.stringSimilarity! - a.stringSimilarity!);

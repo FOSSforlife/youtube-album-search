@@ -29,6 +29,7 @@
 		"dotenv": "^10.0.0",
 		"google-auth-library": "^7.10.0",
 		"googleapis": "^88.2.0",
+		"html-entities": "^2.3.2",
 		"metadata-filter": "^1.3.0",
 		"string-similarity": "^4.0.4"
 	}
