@@ -1,3 +1,17 @@
+# v0.0.3 (Sun Oct 03 2021)
+
+#### ⚠️ Pushed to `main`
+
+- .autorc ([@FOSSforlife](https://github.com/FOSSforlife))
+- Fix npm command ([@FOSSforlife](https://github.com/FOSSforlife))
+- GitHub Actions release ([@FOSSforlife](https://github.com/FOSSforlife))
+
+#### Authors: 1
+
+- Elias Jackson ([@FOSSforlife](https://github.com/FOSSforlife))
+
+---
+
 # v0.0.2 (Sun Oct 03 2021)
 
 #### ⚠️ Pushed to `main`
