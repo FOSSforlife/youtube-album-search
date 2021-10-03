@@ -2,17 +2,19 @@
 	"name": "youtube-album-search",
 	"version": "0.0.0",
 	"description": "",
-	"main": "index.js",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
 	"scripts": {
 		"test": "ts-node src/test.ts",
-		"compile": "tsc"
+		"compile": "tsc",
+		"prepublish": "tsc"
 	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/FOSSforlife/youtube-album-search.git"
 	},
 	"keywords": [],
-	"author": "",
+	"author": "Elias Jackson <ejthedj0@gmail.com>",
 	"license": "ISC",
 	"bugs": {
 		"url": "https://github.com/FOSSforlife/youtube-album-search/issues"
@@ -22,6 +24,7 @@
 		"@types/node": "^14.11.2",
 		"@types/string-similarity": "^4.0.0",
 		"@typescript-eslint/eslint-plugin": "^4.32.0",
+		"auto": "^10.32.1",
 		"ts-node": "^10.2.1",
 		"typescript": "^4.4.3"
 	},
@@ -32,5 +35,36 @@
 		"html-entities": "^2.3.2",
 		"metadata-filter": "^1.3.0",
 		"string-similarity": "^4.0.4"
+	},
+	"auto": {
+		"plugins": [
+			"npm"
+		],
+		"labels": [
+			{
+				"name": "enhancement",
+				"changelogTitle": "🚀 Enhancement",
+				"description": "Increment the minor version when merged",
+				"releaseType": "minor",
+				"color": "#F1A60E",
+				"overwrite": true
+			},
+			{
+				"name": "bug",
+				"changelogTitle": "🐛 Bug Fix",
+				"description": "Increment the patch version when merged",
+				"releaseType": "patch",
+				"color": "#870048",
+				"overwrite": true
+			},
+			{
+				"name": "enhancement",
+				"changelogTitle": "🏎 Performance",
+				"description": "Improve performance of an existing feature",
+				"releaseType": "patch",
+				"color": "#f4b2d8",
+				"overwrite": true
+			}
+		]
 	}
 }
