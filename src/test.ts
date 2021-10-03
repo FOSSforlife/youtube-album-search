@@ -13,6 +13,6 @@ dotenv.config();
 
 	// console.log(await albumSearch('converge jane doe', youtube));
 	// console.log(await albumSearch('five star hotel gray data', youtube));
-	console.log(await albumSearch('black sabbath', youtube));
-	// console.log(await albumSearch('converge jane doe', youtube));
+	// console.log(await albumSearch('black sabbath black sabbath', youtube));
+	console.log(await albumSearch('iron maiden iron maiden', youtube));
 })();
