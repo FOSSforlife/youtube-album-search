@@ -31,5 +31,5 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           npm ci
-          npm compile
+          npm run compile
           npx auto shipit
