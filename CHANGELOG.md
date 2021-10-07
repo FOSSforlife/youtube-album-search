@@ -1,3 +1,15 @@
+# v0.0.4 (Thu Oct 07 2021)
+
+#### ⚠️ Pushed to `main`
+
+- Create README.md ([@FOSSforlife](https://github.com/FOSSforlife))
+
+#### Authors: 1
+
+- Elias Jackson ([@FOSSforlife](https://github.com/FOSSforlife))
+
+---
+
 # v0.0.3 (Sun Oct 03 2021)
 
 #### ⚠️ Pushed to `main`
